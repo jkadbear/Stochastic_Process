@@ -1,0 +1,464 @@
+
+
+{\bf 以下如果没有指明变量$t$的取值范围, 一般视为$t \in R$, 平稳过程是指宽平稳过程.}\\
+4.1 设$X(t) = \sin Ut$, 这里$U$为$(0, 2\pi)$上的均匀分布.\\
+(a)若$t = 1, 2, \cdots , $证明$\{X(t), t = 1, 2, \cdots\}$是宽平稳但不是严平稳过程,\\
+(b)设$t \in [0, +\infty)$, 证明$\{X(t) , t \geqslant 0\}$既不是严平稳也不是宽平稳过程.\\
+证：
+(a)
+	\[
+	\begin{split}
+	\E(X(t)) & = \E \sin Ut\\
+			& = \int^{2\pi}_0 \frac{1}{2\pi}\sin Ut dU\\
+			& = 0 ~~~(t = 1,2,\cdots)
+	\end{split}
+	\]
+	\[
+	\begin{split}
+	\cov(X(t), X(s)) & = \E(\sin Ut \cdot \sin Us)\\
+					& = \frac{1}{2}\E\left(\cos(t-s)U-\cos(t+s)U\right)\\
+					& = \frac{1}{4\pi}\left\{\frac{1}{t-s}\sin(t-s)U\big |^{2\pi}_0 - \frac{1}{t+s}\sin(t+s)U\big |^{2\pi}_0\right\}\\
+					& = 0 ~~~(t\neq s)
+	\end{split}
+	\]
+	当$t=s$时$\cov(X(t), X(s)) = \E\sin^2 Ut = \frac{1}{2}$\\
+	$\therefore$ 是宽平稳\\
+	考虑$F_t(x) = P(\sin Ut \leqslant x)$, 显然$F_{t+h} = P\left(\sin U(t+h) \leqslant x\right)$与其不一定相同\\
+	$\therefore$ 不是严平稳\\
+	(b)\[
+	EX(t) = \frac{1}{2\pi t}(1-\cos2\pi t)
+	\]
+	\[
+	DX(t) = \E\left(\sin Ut - \frac{1}{2\pi t}(1-\cos2\pi t)\right)^2 = \frac{1}{2} - \frac{\sin4\pi t}{8\pi t} - \left(\frac{1-\cos2\pi t}{2\pi t}\right)^2
+	\]
+	都与$t$相关\\
+	$\therefore$ 不是宽平稳\\
+	若其严平稳, 则因二阶矩存在, 应为宽平稳, 矛盾.\\
+	$\therefore$ 不是严平稳.\\
+
+
+4.2 设$\{X_n, n = 0,1,2\cdots\}$ 是平稳序列, 定义$\{X^{(i)}_n, n = 1,2,\cdots\}, i = 1, 2, \cdots, $为
+	\[
+	X^{(1)}_n = X_n - X_{n-1},
+	\]
+	\[
+	X^{(2)}_n = X^{(1)}_n - X^{(1)}_{n-1},\\
+	\cdots\cdots
+	\]
+	证明这些序列仍是平稳序列.\\
+证：\\
+	$1^\circ \ell = 0$ 时\\
+	$\E X_n$依定义为常数$C_0$\\
+	$\cov(X_n, X_m)$依定义为$n-m$的函数$f_0(n-m)$\\
+	成立\\
+	$2^\circ$设当$\ell \leqslant k$时成立, 则当$\ell = k + 1$时\\
+	\[
+	\E X^{(\ell)}_n = \E(X^{(k)}_n - X^{(k)}_{n-1}) = C_k - C_k = 0
+	\]
+	\[
+	\begin{split}
+	\cov(X^{(k+1)}, X^{(k+1)}_m) & = \E(X^{(k+1)}_nX^{(k+1)}_m)\\
+								& = \E\left[(X^{(k)}_n - X^{(k)}_{n-1})(X^{(k)}_m - X^{(k)}_{m-1})\right]\\
+								& = \E(X^{(k)}_nX^{(k)}_m) - \E(X^{(k)}_{n-1}X^{(k)}_m) - \E(X^{(k)}_{n}X^{(k)}_{m-1}) + \E(X^{(k)}_{n-1}X^{(k)}_{m-1})\\
+								& = f_k(n-m) - f_k(n-1-m) - f_k(n-m+1) + f_k(n-m)\\
+								& = f_{\ell}(n-m)
+	\end{split}
+	\]
+	只与$n-m$有关\\
+	$\therefore$是平稳的
+
+
+4.3 设$X_n = \sum\limits^N_{k=1}\sigma_k\sqrt{2}\cos(a_kn-U_k)$, 这里$\sigma_k$和$a_k$为正常数, $k=1, \cdots, N;U_1, \cdots, U_n$是$(0,2\pi)$上独立均匀分布随机变量, 证明$\{X_n, n = 0, \pm 1, \cdots\}$是平稳过程.\\
+证：$EX_n = \sum\limits^N_{k=1}\sigma_k\sqrt{2}(\cos a_knE\cos U_k + \sin a_knE\sin U_k) = 0$\\
+	\[
+	\begin{split}
+	\cov(X_n, X_m) & = \E(X_n, X_m)\\
+				& = \E\left[\sum^N_{k=1}\sigma_k\sqrt{2}\cos a_kn-U_k\sum^N_{j=1}\sigma_j\sqrt{2}\cos (a_jm-U_j)\right]\\
+				& = \sum^N_{k=1}2\sigma^2_k\E\left[\cos(a_kn-U_k)\cos(a_km-U_k)\right]\\
+				& = \sum^N_{k=1}\sigma^2_k\E\left[\cos a_k(n-m) + \cos(a_kn + a_km - 2U_k)\right]\\
+				& = \sum^N_{k=1}\sigma^2_k\cos a_k(n-m)\\
+	\end{split}
+	\]
+	只与$n-m$有关\\
+	$\therefore$宽平稳.
+
+
+4.4 设$A_k, k = 1,2,\cdots,n$是$n$个实随机变量; $\omega_k, k = 1,2,\cdots,n,$是$n$个实数. 试问$A_k$以及$A_k$之间应满足怎样的条件才能使
+\[
+Z(t) = \sum^n_{k=1}A_ke^{j\omega_kt}
+\]
+是一个复的平稳过程.\\
+解：要求
+\[
+\E Z(t) = \sum^n_{k=1}\E A_ke^{j\omega_kt} = const
+\]
+$\therefore \E A_k = 0$\\
+要求
+\[
+\cov(Z(t), Z(s)) = \E(Z(t)\bar{Z(s)}) = \sum^{+\infty}_{k=1}\sum^{+\infty}_{\ell=1}\E(A_kA_\ell)\cdot e^{j\omega_kt - j\omega_\ell s}
+\]
+只与$t-s$有关\\
+$\therefore \E(A_kA_l) = 0 ~~~~(k\neq \ell \text{且}\omega_k \neq \omega_\ell)$
+
+
+4.6 设$\{X(t)\}$是一个平稳过程, 对每个$t \in \mathbf{R}$, $X'(t)$存在. 证明对每个给定的$t$, $X(t)$与$X'(t)$不相关, 其中$X'(t) = \frac{dX(t)}{dt}$.\\
+证明：以下假定求导数和求期望可交换\\
+设$\E(X(t)) = m, D(X(t)) = \sigma^2$\\
+\[
+\begin{split}
+&\therefore \E(X(t+\Delta t)) = m\\
+&\because X'(t) = \lim\limits_{\Delta t \rightarrow 0}\frac{X(t+\Delta t) - X(t)}{\Delta t}\\
+&\therefore \E(X'(t)) = 0\\
+\end{split}
+\]
+\[
+\begin{split}
+\therefore \cov(X(t), X'(t)) & = \E(X(t)X'(t))\\
+						& = \frac{1}{2}\E\Big[\big(X^2(t)\big)'\Big]\\
+						& = \frac{1}{2}\big(EX^2(t)\big)'\\
+						& = \frac{1}{2}(\sigma^2+m^2)'\\
+						& = 0
+\end{split}
+\]
+$\therefore$ 不相关
+
+
+4.7 设$\{X(t)\}$是高斯过程, 均值为$0$, 协方差函数$R(\tau) = 4\exp{-2|\tau|}$. 令
+\[
+Z(t) = X(t+1), W(t) = X(t-1),
+\]
+(i)求$E(Z(t)W(t))$和$E(Z(t) + W(t))^2$;\\
+(ii)求$Z(t)$的密度函数$f_Z(z)$及$P(Z(t)<1)$;\\
+(iii)求$Z(t), W(t)$的联合密度$f_{Z,W}(z,w)$.\\
+解：\\
+(i)
+	\[
+	\begin{split}
+	E(Z(t)W(t)) & = E(X(t+1)X(t-1))\\
+				& = R(2)\\
+				& = 4e^{-4}
+	\end{split}
+	\]
+	\[
+	\begin{split}
+	E(Z(t)W(t))^2 & = E\big(X^2(t+1)+2X(t+1)X(t-1)+X^2(t-1)\big)\\
+				& = 2EX^2(t)+2R(2)\\
+				& = 2\big[DX(t)-E^2X(t)\big] + 4e^{-4}\\
+				& = 2R(0) + 4e^{-4}\\
+				& = 4(1+e^{-4})
+	\end{split}
+	\]
+	(ii)$Z(t) = X(t+1) \sim N(0, 2^2)$\\
+	$\therefore f_Z(z) = \frac{1}{\sqrt{2\pi\cdot 2^2}}e^{-\frac{z^2}{2\cdot 2^2}} = \frac{1}{\sqrt{8\pi}}e^{-\frac{z^2}{8}}$\\
+	$\therefore P(Z(t)<1) = \int^1_{-\infty}f_Z(z)\,dz = \frac{1}{\sqrt{8\pi}}\int^1_{-\infty}e^{-\frac{z^2}{8}}\,dz$\\
+	(iii)显然$f_{Z,W}(z,w)$为二维正态分布概率密度函数\\
+	协方差矩阵
+	\[
+	C=
+	\begin{pmatrix}
+	4 & 4e^{-4}\\
+	4e^{-4} & 4\\
+	\end{pmatrix}
+	\]
+	其逆矩阵
+	\[
+	C^{-1}=
+	\begin{pmatrix}
+	\frac{1}{4(1-e^-8)} & -\frac{e^{-4}}{4{1-e^-8}}\\
+	-\frac{e^{-4}}{4{1-e^-8}} & \frac{1}{4(1-e^-8)} 
+	\end{pmatrix}
+	\]
+	其行列式$\left|C\right| = 16(1-e^{-8})$\\
+	期望向量$\bar \mu = (0,0)$\\
+	\[
+	\begin{split}
+	\therefore f_{Z,W}(z,w) & = \frac{1}{2\pi\left|C\right|}\exp\Bigg\{-\frac{1}{2}\Big((z,w)-\bar \mu\Big)C^{-1}\Big((z,w)-\bar \mu\Big)^T\Bigg\}\\
+							& = \frac{1}{8\pi\sqrt{1-e^{-8}}}\exp\Bigg\{-\frac{z^2+w^2-2e^{-4}wz}{8(1-e^{-8})}\Bigg\}
+	\end{split}
+	\]
+
+
+4.8 设$\{X(t), t\in \mathbf R\}$是一个严平稳过程, $\varepsilon$为只取有限个值的随机变量. 证明$\{Y(t) = X(t-\varepsilon), t\in \mathbf R\}$仍是一个严平稳过程.\\
+提示：对$\varepsilon$用全概率公式.\\
+证：设$\varepsilon$可取$\varepsilon_1, \varepsilon_2, \cdots, \varepsilon_n$\\
+\[
+\begin{split}
+\text{则}& \quad P\big\{Y(t_1+h) \leqslant y_1, \cdots, Y(t_k+h) \leqslant y_k\big\}\\
+	& = P\big\{X(t_1-\varepsilon+h) \leqslant y_1, \cdots, X(t_k-\varepsilon+h) \leqslant y_k\big\}\\
+	& = \sum^n_{i=1}P(\varepsilon = \varepsilon_i)P\big\{X(t_1-\varepsilon_i + h) \leqslant y_1, \cdots, X(t_k-\varepsilon_i + h) \leqslant y_k | \varepsilon = \varepsilon_i\big\}
+\end{split}
+\]
+$\because X(t)$严平稳\\
+\[
+\begin{split}
+\therefore \text{上式} & = \sum^n_{i=1}P(\varepsilon = \varepsilon_i)P\big\{X(t_1-\varepsilon_i) \leqslant y_1, \cdots, X(t_k-\varepsilon) \leqslant y_k | \varepsilon = \varepsilon_i\big\}\\
+					& = P\big\{X(t_1-\varepsilon) \leqslant y_1, \cdots, X(t_k-\varepsilon) \leqslant y_k\big\}\\
+					& = P\big\{Y(t_1) \leqslant y_1, \cdots, Y(t_k) \leqslant y_k\big\}\\
+\end{split}
+\]
+$\therefore Y(t)$为严平稳.\\
+
+
+4.10 设$\{X(t)\}$是一个复值平稳过程, 证明
+	\[
+	E|X(t+\tau)-X(t)|^2 = 2\Re e(R(0)-R(\tau)).
+	\]
+证：记$m=EX(t)$\\
+\[
+\begin{split}
+\text{则} E\big|X(t+\tau) - X(t)\big|^2 & = E\big|(X(t+\tau)-m)-(X(t)-m)\big|^2\\
+								& = E\big|X(t+\tau)-m\big|^2 + E\big|X(t)-m\big|^2 - E\Big[(X(t+\tau)-m)\overline{(X(t)-m)}\,\Big] \\
+								& \quad - E\Big[(X(t)-m)\overline{(X(t+\tau)-m)}\,\Big]\\
+								& = 2R(0)-R(-\tau)-R(\tau)
+\end{split}
+\]
+又$\because R(-\tau) = \overline{R(\tau)}$\\
+$\therefore \text{上式} = 2\Re e(R(0)-R(\tau))$
+
+
+4.11 设$\{X(t)\}$是零均值的平稳高斯过程, 协方差函数为$R(\tau)$, 证明
+\[
+P(X'(t) \leqslant a) = \phi\Bigg(\frac{a}{\sqrt{-R''(0)}}\Bigg),
+\]
+其中$\phi(\cdot)$为标准正态分布函数.\\
+证：注意到$X'(t)$服从正态分布\\
+	而$EX'(t) = \big[EX(t)\big]' = 0$\\
+	$Var\,X'(t) = \cov(X'(t), X'(t+0)) = -R''(0)$\\
+	$\therefore X'(t) \sim N(0,-R''(0))$\\
+	\[
+	\therefore P\big(X'(t) \leqslant a\big) = P\Bigg(\frac{X'(t)}{\sqrt{-R''(0)}} \leqslant \frac{a}{\sqrt{-R''(0)}}\Bigg) = \phi\Bigg(\frac{a}{\sqrt{-R''(0)}}\Bigg)
+	\]
+
+
+4.12 设$\{X(t)\}$为连续宽平稳过程, 均值$m$未知, 协方差函数为$R(\tau) = ae^{-b|\tau|}, \tau \in R, a > 0, b > 0$. 对固定的$T > 0$, 令$\overline{X} = T^{-1}\int^T_0X(s)\,ds$. 证明$E\overline{X} = m$(即$\overline{X}$是$m$的无偏估计)以及
+\[
+Var(\overline{X}) = 2a[(bT)^{-1}-(bT)^{-2}(1-e^{-bT})].
+\]
+提示：在上述条件下, 期望号与积分号可以交换.\\
+证：
+\[
+\begin{split}
+E\overline{X} & = E\big[\frac{1}{T}\int^T_0X(s)\,ds\big]\\
+			& = \frac{1}{T}\int^T_0EX(s)\,ds\\
+			& = \frac{mT}{T}\\
+			& = m
+\end{split}
+\]
+\[
+\begin{split}
+Var(\overline{X}) & = E\Bigg[\frac{1}{T^2}\bigg(\int^T_0X(t)\,dt - m\bigg)\bigg(\int^T_0X(s)\,ds - m\bigg)\Bigg]\\
+				& = \frac{1}{T^2}\int^T_0\int^T_0E\big[(X(t)-m)(X(s)-m)\big]\,dsdt\\
+				& = \frac{1}{T^2}\int^T_0\int^T_0R(t-s)\,dsdt\\
+				& = \frac{1}{T^2}\int^T_0\int^T_0ae^{-b|t-s|}\,dsdt\\
+				& = \frac{2a}{T^2}\int^T_0\,dt\int^T_0e^{-b(t-s|}\,ds\\
+				& = \frac{2a}{T^2}\int^T_0\frac{1}{b}\big(1-e^{-bt}\big)\,dt\\
+				& = 2a\big[(bT)^{-1}-(bT)^{-2}(1-e^{-bT})\big].
+\end{split}
+\]
+
+
+4.13 设$\{X(t)\}$为平稳过程, 设$\{X(t)\}$的$n$阶导数$X^{(n)}(t)$存在, 证明$\{X^{(n)}(t)\}$是平稳过程.\\
+提示：利用协方差函数性质4.\\
+证：$EX^{(n)}(t) = \big[EX(t)\big]^{(n)} = 0$\\
+	$\cov\big(X^{(n)}(t), X^{(n)}(t+\tau)\big) = (-1)^nR^{(2n)}(\tau)$\\
+	$\therefore \{X^{(n)}(t)\}$是平稳过程.\\
+
+
+4.14 证明定理$4.1$中关于平稳序列均值的遍历性定理.\\
+\indent 提示：用Schwarz不等式\\
+证：\\
+充分性：
+\[
+\begin{split}
+& \quad E\bigg|\frac{1}{2N+1}\sum^N_{k=-N}X(k)-m\bigg|^2~~~~~~~~(m=E(X_n))\\
+& = \frac{1}{(2N+1)^2}E\bigg(\sum^N_{k=-N}X(k)-m\bigg)^2\\
+& = \frac{1}{(2N+1)^2}E\bigg(\sum^N_{k=-N}X(k)-m\bigg)\bigg(\sum^N_{\ell=-N}X(\ell)-m\bigg)\\
+& = \frac{1}{(2N+1)^2}\sum^N_{k=-N}\,\sum^N_{\ell=-N}R(k-\ell)\\
+& = \frac{1}{(2N+1)^2}\Bigg[\sum^N_{\tau=0}R(\tau)\cdot 2(2N+1-\tau)-(2N+1)R(0)\bigg]\\
+& \leqslant \Bigg|\frac{2}{2N+1}\sum^N_{\tau=0}R(\tau)\Bigg| + \Bigg|\frac{1}{2N+1}R(0)\Bigg|\\
+\end{split}
+\]
+\[
+\begin{split}
+\because & \lim_{N\rightarrow+\infty}\frac{2}{2N+1}\sum^N_{\tau=0}R(\tau) = \lim_{N\rightarrow+\infty}\frac{2}{2N-1}\sum^{N-1}_{\tau=0}R(\tau) = \lim_{N\rightarrow+\infty}\frac{2N}{2N-1}\cdot \frac{1}{N}\sum^{N-1}_{\tau=0}R(\tau) = 0,\\
+& \lim_{N\rightarrow+\infty}\frac{1}{2N+1}R(0) = 0,\\
+\therefore & \lim_{N\rightarrow+\infty}E\bigg|\frac{1}{2N+1}\sum^N_{k=-N}X(k)-m\bigg|^2 = 0.
+\end{split}
+\]
+必要性：记$\overline{X}_N = \frac{1}{2N+1}\sum\limits^N_{-N}X_k$, 则有\\
+\[
+\begin{split}
+& \quad \bigg[\frac{1}{2N+1}\sum^{2N}_{\tau=0}R(\tau)\bigg]^2\\
+& = \bigg[\frac{1}{2N+1}\sum^N_{k=-N}\cov(X_{-N}, X_k)\bigg]^2\\
+& = \bigg[\cov(X_{-N}, \overline{X}_N)\bigg]^2\\
+& \leqslant Var(X_{-N})Var(\overline{X}_N)~~~~~~~~(\text{Schwarz不等式})\\
+& = R(0)E(\overline{X}_N-m)^2\rightarrow 0~~~(N\rightarrow +\infty)
+\end{split}
+\]
+从而有
+\[
+\lim_{N\rightarrow +\infty}\frac{1}{2N+1}\sum^{2N}_{\tau=0}R(\tau) = 0,
+\]
+由上易得
+\[
+\lim_{N\rightarrow +\infty}\frac{1}{N}\sum^{N-1}_{\tau=0}R(\tau) = 0.
+\]
+
+
+4.15 如果$(X_1, X_2, X_3, X_4)$是均值为$0$的联合正态随机向量, 则
+\[
+\begin{split}
+\E X_1X_2X_3X_4 = & \cov (X_1,X_2)\cov (X_3,X_4) + \cov (X_1,X_3)\cov (X_2,X_4)\\
+				& + \cov (X_1,X_4)\cov (X_2,X_3).
+\end{split}
+\]
+利用这个事实证明定理$4.3$\\
+证：\\
+取固定的$\tau\in \mathbb{Z}$, 记$X_{n+\tau}X_n\overset{\Delta}{=}Y_n$,则
+\[
+\begin{split}
+\E Y_n & = R_X(\tau)(const)\\
+\cov(Y_{n+\tau_1}, Y_n) & = \E Y_{n+\tau_1}Y_n - R^2_X(\tau)\\
+					& = \E X_{n+\tau_1+\tau}X_{n+\tau_1}X_{n+\tau}X_n - R^2_X(\tau)\\
+					& = R^2_X(\tau) + R^2_X(\tau_1) + R_X(\tau_1+\tau)R_X(\tau_1-\tau) - R^2_X(\tau)\\
+					& = R^2_X(\tau_1)+R_X(\tau_1+\tau)R_X(\tau_1-\tau)\\
+					& = R_Y(\tau_1)
+\end{split}
+\]
+$\therefore \{Y_n\}$是平稳过程.\\
+又易见$X = \{X_n, n \in \mathbb{Z}\}$的协方差函数遍历性成立的充要条件是$Y = \{Y_n, n \in \mathbb{Z}\}$的均值遍历性成立.\\
+而我们有
+\[
+\begin{split}
+\Bigg|\frac{1}{N}\sum^{N-1}_{\tau_1=0}R_Y(\tau_1)\Bigg| & \leqslant \frac{1}{N}\sum^{N-1}_{\tau_1=0}\Big|R_Y(\tau_1)\Big|\\
+	& \leqslant \frac{1}{N}\sum^{N-1}_{\tau_1=0}\bigg[R^2_X(\tau_1) + \Big(R^2_X(\tau_1+\tau)+R^2_X(\tau_1-\tau)\Big)/2\bigg]\rightarrow 0, (N\rightarrow +\infty)
+\end{split}
+\]
+由均值遍历性定理(i)可知, $Y = \{Y_n, n \in \mathbb{Z}\}$的均值遍历性成立, 即$X = \{X_n, n \in \mathbb{Z}\}$的协方差函数遍历性成立.\\
+
+
+4.16 设$X_0$为随机变量, 其概率密度函数为
+\[
+f(x) = 
+\begin{cases}
+2x,& 0 \leqslant x \leqslant 1,\\
+0,& \text{其他},
+\end{cases}
+\]
+设$X_{n+1}$在给定$X_0, X_1, \cdots, X_n$下是$(1-X_n,1]$上的均匀分布, $n=0,1,2,\cdots$, 证明$\{X_n, n=0,1,\cdots\}$的均值有遍历性.\\
+证：
+\[
+\E X_0 = \int^1_02x^2\,dx = \frac{2}{3}
+\]
+\[
+\E X^2_0 = \int^1_02x^3\,dx = \frac{1}{2}
+\]
+\[
+\begin{split}
+\E X_{n+1} & = \E[\E(X_{n+1}|X_N)]\\
+			& = \E\Big[\int^1_{1-x_n}\frac{x_{n+1}}{x_n}\,dx_{n+1}\Big]\\
+			& = \E(1-\frac{1}{2}X_n)\\
+			& = 1-\frac{1}{2}\E X_n\\
+\end{split}
+\]
+\[
+\because \E X_0 = \frac{2}{3} ~~~~\therefore \E X_n \equiv \frac{1}{2}
+\]
+又有
+\[
+\begin{split}
+\E X^2_{n+1} & = \E\Big[\E(X^2_{n+1}|X_n)\Big]\\
+			& = \E \Big[\int^1_{1-x_n}\frac{x^2_{n+1}}{x_n}\,dx_{n+1}\Big]\\
+			& = 1 - \E X_n + \frac{1}{3}\E X^2_n
+\end{split}
+\]	
+\[
+\because \E X^2_0 = \frac{1}{2}~~~~\therefore \E X^2_n \equiv \frac{1}{2}
+\]
+\[
+\begin{split}
+\E(X_nX_{n+m}) & = \E\Big[\E(X_nX_{n+m}|X_n)\Big]\\
+			& = \E\Big[X_n\E(X_{n+m}|X_n)\Big]\\
+			& = \E\Big[X_n\big(1-\frac{1}{2}\E(X_{n+m-1}|X_n)\big)\Big]\\
+			& = \E X_n - \frac{1}{2}\E\Big[\E(X_nX_{n+m-1}|X_n)\Big]\\
+			& = \frac{2}{3} - \frac{1}{2}\E(X_nX_{n+m-1})\\
+\end{split}
+\]
+\[
+\begin{split}
+\therefore \E (X_nX_{n+m}) - \frac{4}{9} = - \frac{1}{2}\Big(\E(X_nX_{n+m}) -  \frac{4}{9}\Big) = \cdots = \Big(-\frac{1}{2}\Big)^m\Big(\E X^2_n - \frac{4}{9}\Big) = \frac{1}{18}\Big(-\frac{1}{2}\Big)^m
+\end{split}
+\]
+\[
+\therefore R_X(n,n+m) = \E\big(X_n - \frac{2}{3}\big)\big(X_{n+m} - \frac{2}{3}\big) = \E(X_nX_{n+m}) - \frac{4}{9}= \frac{1}{18}\Big(-\frac{1}{2}\Big)^m = R(m)
+\]
+$\therefore \{X_n\}$是平稳序列\\
+又$\because \lim_{m\rightarrow +\infty} R(m) = 0$\\
+$\therefore$是均值遍历的\\
+
+
+4.17 设$\{\varepsilon_n, n=0,\pm1,\cdots\}$为白噪声序列, 令
+\[
+X_n = \alpha X_{n-1} + \varepsilon, |\alpha| < 1, n = \cdots, -1, 0, 1, \cdots,
+\]
+则$X_n = \sum\limits^\infty_{k=0}\alpha^k\varepsilon_{n-k}$, 从而证明$\{X_n, n = \cdots, -1, 0, 1, \cdots\}$为平稳序列. 求出该序列的协方差函数. 此序列是否具有遍历性?\\
+解：
+\[
+\E X_n = \sum^{+\infty}_{k=0}\alpha^k\E\varepsilon_{n-k} = 0
+\]
+\[
+\begin{split}
+R_X(n, n+m) & = \cov(X_n, X_{n+m})\\
+			& = \E\Big(\sum^{+\infty}_{k=0}\alpha^k\varepsilon_{n-k}\Big)\Big(\sum^{+\infty}_{\ell=0}\alpha^\ell\varepsilon_{m+n-\ell}\Big)\\
+			& = \sum^{+\infty}_{k=0}\sum^{+\infty}_{\ell=0}\alpha^{k+\ell}\E\varepsilon_{n-k}\varepsilon_{m+n-\ell}\\
+			& = \sum^{+\infty}_{k=0}\alpha^{2k+m}\E\varepsilon^2_{n-k}\\
+			& = \alpha^m\frac{\sigma^2}{1-\alpha^2}\\
+			& = R(m)
+\end{split}
+\]
+$\therefore \{X_n\}$为平稳序列\\
+又$\lim\limits_{m\rightarrow+\infty}R(m) = 0,~\therefore$是均值遍历的\\
+
+
+以下没有特殊声明, 所涉及的过程均假定均值函数为$0$\\
+4.20 设$\{X(t)\}$为平稳过程, 令$Y(t) = X(t+a) - X(t-a)$. 分别以$R_X, S_X$和$R_Y, S_Y$记随机过程$X$和$Y$的协方差函数和功率谱密度, 证明
+\[
+\begin{split}
+R_Y(\tau) & = 2R_X(\tau) - R_X(\tau + 2a) - R_X(\tau - 2a),\\
+S_Y(\omega) & = 4S_X(\omega)\sin^2a\omega.
+\end{split}
+\]
+证：
+\[
+\begin{split}
+R(\tau) & = \E\Big[X(t+a)-X(t-a)\Big]\Big[X(t-\tau+a)-X(t-\tau-a)\Big]\\
+		& = \E\Big[X(t+a)X(t-\tau-a)\Big] - \E\Big[X(t+a)-X(t-\tau-a)\Big]\\
+		& \qquad - \E\Big[X(t-a)X(t-\tau-a)\Big] + \E\Big[X(t-a)-X(t-\tau-a)\Big]\\
+		& = R_X(\tau) - R_X(\tau+2a) - R_X(\tau-2a) + R_X(\tau)\\
+		& = 2R_X(\tau) - R_X(\tau+2a) - R_X(\tau-2a)
+\end{split}
+\]
+\[
+\begin{split}
+S_Y(\omega) & = \int^{+\infty}_{-\infty}R_Y(\tau)e^{-i\omega\tau}\,d\tau\\
+			& = 2\int^{+\infty}_{-\infty}R_X(\tau)e^{-i\omega\tau}\,d\tau - \int^{+\infty}_{-\infty}R_X(\tau+2a)e^{-i\omega\tau}\,d\tau\\
+			& \qquad - \int^{+\infty}_{-\infty}R_X(\tau-2a)e^{-i\omega\tau}\,d\tau\\
+			& = S_X(\omega)\big(2 - e^{2a\omega i} - e^{-2a\omega i}\big)\\
+			& = S_X(\omega)\big(2 - 2\cos 2a\omega\big)\\
+			& = 4S_X(\omega)\sin^2a\omega
+\end{split}
+\]
+
+
+4.21 设平稳过程$X$的协方差函数$R(\tau) = \sigma^2e^{-\tau^2}$, 试研究其功率谱密度函数的性质.\\
+解：
+\[
+\begin{split}
+S(\omega) & = \int^{+\infty}_{-\infty}\sigma^2e^{-\tau^2}e^{-i\omega\tau}\,d\tau\\
+		& = \sigma^2e^{-\frac{\omega^2}{4}}\int^{+\infty}_{-\infty}e^{-(\tau^2+i\omega\tau-\frac{\omega^2}{4})}\,d\tau\\
+		& = \sigma^2e^{-\frac{\omega^2}{4}}\int^{+\infty}_{-\infty}e^{-\frac{(\tau+\frac{i\omega}{2})^2}{2\times \frac{1}{2}}}\,d\tau\\
+		& = \sigma^2\sqrt{\pi}e^{-\frac{\omega^2}{4}}.
+\end{split}
+\]
+$S(\omega)$为$\mathbb{R}$上的实的、偶的、非负且可积的函数.\\
+

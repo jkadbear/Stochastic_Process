@@ -1,0 +1,297 @@
+%第 10 和 11 题未做
+
+
+1.1 令$X(t)$为二阶矩存在的随机过程. 试证它是宽平稳的当且仅当$\E X(t)$与$\E X(t)X(s+t)$都不依赖s.\\
+证：\\
+充分性：若$\E X(s)$与$\E X(s)X(s+t)$都不依赖s\\
+        则$\E X(s) = $ 常数$m$, $\E X(s)X(s+t) = f(t)$\\
+        令$s^{\prime} = s + t$,\\
+        \[
+        \therefore \E X(s)X(s^{\prime}) = f(s^{\prime}-s)
+        \]
+		\[			
+			\begin{aligned}
+			\therefore R_X(s, s^{\prime})  & = \E X(s)X(s^{\prime}) - \E X(s)\E X(s^{\prime}) \\
+									 & = f(s^{\prime} - s) - m^2 
+			\end{aligned}
+		\]
+		$\therefore X(t)$是宽平稳的\\
+必要性：若$X(t)$宽平稳则$\E X(S)$为常数$m$， 即$\E X(S)$与$s$无关\\
+				则
+			\[
+			\begin{aligned}
+			 R_X(s, s^{\prime}) & = \E X(s)X(s^{\prime}) - \E X(s)\E X(s^{\prime}) \\
+									& = g(s^{\prime} - s) \\
+			\end{aligned}
+			\]
+
+			令$s' = s + t$ \\
+			则$\E X(s)X(s+t) = m^2 + g(t)$与$s$无关\\
+
+
+1.2 记$U_1, \cdots, U_n$为在$(0,1)$中均匀分布的独立随机变量. 对$0<t,x<1$定义
+	\[ I(t,x) = 
+		\begin{cases}
+		1, & \text{ $x \leqslant t$,} \\
+		0, & \text{ $x > t$,}
+		\end{cases}
+	\]
+并记$X(t) = \frac{1}{n}\sum\limits^n_{k=1}I(t,U_k), 0 \leqslant t \leqslant 1, $这是$U_1, \cdots, U_n$的经验分布函数. 试求过程$X(t)$的均值和协方差函数.\\
+解：
+	\[
+	\begin{aligned}
+	\E X(t) & = \E [\frac{1}{n}\sum^n_{k=1}I(t, U_k)] \\
+		& = \E I(t, U_1) \\
+		& = \int^t_0 1\,dx = t \\
+	\end{aligned}
+	\]
+	\[
+	\begin{aligned}
+	R_x(s, t) & = \E [X(s)X(t)] - \E X(s)\E X(t)\\
+			& = \E [\frac{1}{n^2}\sum^n_{i=1}I(s, U_i) \cdot \sum^n_{j=1}I(s, U_j)] - st\\
+			& = \frac{1}{n^2}[(n^2 - n)\E (I(s, U_1) \cdot I(t, U_2)) + n\E (I(s, U_1) \cdot I(t, U_1)] - st\\
+			& = \frac{1}{n^2}[(n^2 - n)st + n \cdot \min(s, t)] - st\\
+			& = \frac{1}{n}[\min(s, t) - st]
+	\end{aligned}
+	\]\\
+
+
+1.3 令~$Z_1, Z_2$~为独立的正态随机变量,~均值为$0$,~方差为$\sigma^2$,~$\lambda$为实数.~定义过程$X(t) = Z_1\cos\lambda t + Z_2\sin\lambda t$.~试求$X(t)$的均值函数和协方差函数.~它是宽平稳的吗?\\
+解：	
+	\[
+	\begin{aligned}
+	\E X(t) & = \cos\lambda t \E Z_1 + \sin\lambda t \E Z_2 = 0\\
+	R_X(s, t) & = Cov(Z_1\cos\lambda s + Z_2\sin\lambda s, Z_z\cos\lambda t + Z_2\sin\lambda t)\\
+			& = \cos\lambda s \cos\lambda t Cov(Z_1, Z_1) + \sin\lambda s \sin\lambda t Cov(Z_2, Z_2)\\
+			& = \sigma^2\cos\lambda(s - t)\\
+	\end{aligned}
+	\]
+	\centerline {只与$s-t$有关,~$\therefore$是宽平稳的}\\
+
+
+1.4 Poisson过程$X(t), t \geqslant 0 $满足~(i)~$X(t) = 0$;~(ii)~对$t > s$,~$X(t) - X(s)$~服从均值为$\lambda (t-s)$的Possion分布;~(iii)~过程是有独立增量的.~试求其均值函数和协方差函数.~它是宽平稳的吗?\\
+解：
+	\[
+	\begin{aligned}
+	\E X(t) & = \E [X(t) - X(0)] = \lambda t\\
+	R_X(s, t) & = Cov(X(t), X(s))\\
+			& = Cov(X(s) - X(t) + X(t) - X(0), X(t) - X(0))\\
+			& = Cov(X(t) - X(0), X(t) - X(0)) ~~~~~~\text{（独立增量）}\\
+			& = \lambda t ~~~~~~(s \geqslant t)
+	\end{aligned}
+	\]
+	$\therefore $ 非宽平稳\\
+	
+
+1.5 X(t)为第4题中的Possion过程. 记$Y(t) = X(t+1) - X(t)$, 试求过程$Y(t)$的均值函数和协方差函数, 并研究其平稳性.\\
+解：
+	\[
+	\begin{aligned}
+	\E Y(t) & = \E X(t+1) - \E X(t) = \lambda\\
+	R_X(s, t) & = Cov(X(s+1) - X(s), X(t+1) - X(t))\\
+			& = Cov(X(s+1), X(t+1)) + Cov(X(s), X(t))\\
+			& \qquad - Cov(X(s), X(t+1)) - Cov(X(s+1), X(t))\\
+			& = \lambda [\min (s+1, t+1) + \min (s, t) - \min (s, t+1) - \min (s+1, t)]\\
+	\end{aligned}
+	\]
+	令$\beta = s - t$, 当$\beta > 1$或$\beta < -1$时, $R_Y(s, t) = 0$ \\
+	当$0 < \beta \leqslant 1$时, $R_Y(s, t) = \lambda (t + 1 + t - s - t) = \lambda (t - s + 1)$\\
+	当$-1 \leqslant \beta \leqslant 0$时, $R_Y(s, t) = \lambda (s + 1 + s - s - t) = \lambda (s - t + 1)$\\
+	$\therefore $宽平稳
+
+
+1.6 令$ Z_1 $和$ Z_2 $是独立同分布的随机变量. $P(Z_1 = -1) = P(Z_1 = 1) = \frac{1}{2}$. 记$X(t) = Z_1\cos\lambda t + Z_2\sin\lambda t$, $t \in R$. 试证$X(t)$是宽平稳的, 它是严平稳的吗?\\
+解：
+	\[
+	\begin{aligned}
+	\E Z_1 & = \E Z_2 = 0\\
+	\E X(t) & = \cos\lambda t\E Z_1 + \sin\lambda t\E Z_2 = 0\\
+	R_X(s, t) & = Cov(Z_1\cos\lambda s + Z_2\sin\lambda s, Z_1\cos\lambda t + Z_2\sin\lambda t)\\
+			& = \cos\lambda s \cos\lambda tCov(Z_1, Z_1) + \sin\lambda s\sin\lambda tCov(Z_2, Z_2)\\
+			& = 2\cos\lambda(s-t)VarZ_1\\
+			& = 2\cos\lambda(s-t)\left(\E (Z_1^2) - \E ^2(Z_1)\right)\\
+			& = \cos\lambda(s-t)
+	\end{aligned}
+	\]
+	\begin{flushleft}
+	$\therefore $是宽平稳\\
+	$F_t(x) = P(Z_1\cos\lambda t + Z_2\sin\lambda t \leqslant x)$\\
+	考虑$F_t(0) = P(Z_1\cos\lambda t + Z_2\sin\lambda t \leqslant 0)$\\
+	当$t = 0$时 $F_t(0) = P(Z_1 \leqslant 0) = \frac{1}{2}$\\
+	当$t = \frac{\pi}{4\lambda}$时 $F_t(0) = P\left(\frac{\sqrt{2}}{2}(Z_1+Z_2) \leqslant 0\right) = \frac{3}{4}$\\
+	$\therefore F_t(x)$与$t$有关, 故$X(t)$不是严平稳过程\\
+	\end{flushleft}
+
+
+1.7. 试证：若$Z_0, Z_1,\cdots $为独立同分布随机变量, 定义$ X_n = Z_0 + Z_1 + \cdots + Z_n$, 则$\{X_n, n \geqslant 0\}$ 是独立增量过程.\\
+	证：对$\forall n$及$\forall t_1, \cdots, t_n\in \{0,1,2,\cdots\}, t_1 < t_2 < \cdots < t_n$, 有
+	\[
+	\begin{cases}
+		X(t_2) - X(t_1) = Z_{t_1+1}+\cdots+Z_{t_2},\\
+		X(t_3) - X(t_2) = Z_{t_2+1}+\cdots+Z_{t_3},\\
+		\cdots\cdots\cdots\\
+		X(t_n) - X(t_{n-1}) = Z_{t_{n-1}+1}+\cdots+Z_{t_n}.\\
+	\end{cases}
+	\]
+	由题知$Z_{t_1+1}, \cdots, Z_{t_n}$互相独立, \\
+	$\therefore(Z_{t_1+1},\cdots,Z_{t_2}),(Z_{t_2+1},\cdots,Z_{t_3}),\cdots,(Z_{t_{n-1}+1},\cdots,Z_{t_n})$互相独立,\\
+	$\therefore \{X_n, n \geqslant 0\}$为独立增量过程.\\
+	% 又$X_{t_1+h}-X_{t_1} = Z_{t_1+1} + \cdots + Z_{t_1+h}$\\
+	% $X_{t_2+h}-X_{t_2} = Z_{t_2+1} + \cdots + Z_{t_2+h}$\\
+	% $\because Z_n$独立同分布\\
+	% $\therefore Z_{t_1+1} + \cdots + Z_{t_1+h} \overset{d}{=}Z_{t_2+1} + \cdots + Z_{t_2+h}$\\
+	% $\therefore $是平稳的\\
+	% 逆命题：已知$X_n = \sum\limits^n_{i = 0}Z_i$, 过程$\{X_n, n \geqslant 0\}$是平稳独立增量过程\\
+	% $\therefore X_i - X_{i-1} = Z_i$与$X_j - X_{j-1} = Z_j$独立同分布\\
+	% 即$Z_i, i=0,1,\cdots $是一串独立同分布的随机变量
+
+
+1.8 若$X_1, X_2,\cdots $为独立随机变量, 还要添加什么条件才能确保它是严平稳的随机过程? \\
+	解：
+
+	若$\{X_1, X_2, \cdots \}$严平稳, 则对任意正整数$~m~$和$~n~$, $~X_m~$和$~X_n~$的分布都相同, 从而$X_1, X_2, \cdots $是一列同分布的随机变量. 而当$X_1, X_2, \cdots $是一列独立同分布的随机变量时. 对任意正整数$~k~$及$~n_1, \cdots,n_k, k~$维随机向量$\left(X_{n_1}, \cdots, X_{n_k}\right)$的分布函数为(记$X_1, X_2, \cdots $的共同分布函数为$F(x)$)\\
+	\[
+	\begin{split}
+	F_{\left(X_{n_1}, \cdots, X_{n_k}\right)}(x_1, \cdots, x_k) & = F_{X_{n_1}}(x_1)\cdots F_{X_{n_k}}(x_n)\\
+											& = F(x_1)\cdots F(x_k).~~~-\infty < x_1,\cdots,x_k < +\infty.\\
+	\end{split}
+	\]
+	\begin{center}
+	这说明了$(X_{n_1},\cdots,X_{n_k})$的分布函数与$n_1, \cdots, n_k$无关, 故$\{X_1, X_2, \cdots\}$严平稳.\\
+	\end{center}
+	
+
+1.9 令$X$和$Y$是从单位圆内的均匀分布中随机选取一点所得的横坐标和纵坐标. 试计算条件概率
+	\[
+	P\left(X^2+Y^2 \geqslant \frac{3}{4} \bigg| X > Y\right).
+	\]
+解：
+易见答案为$\frac{1}{4}$.
+
+
+% 1.10 粒子依参数为$\lambda $的Possion分布进入计数器, 两粒子到达的时间间隔$T_1, T_2,\cdots $是独立的参数为$\lambda $的指数分布随机变量. 记$S$是$[0,1]$时段中的粒子总数. 时间区间$I\subset [0,1]$, 其长度记为$|I|$. 试证明$P(T_1\in I, S = 1) = P(T_1\in I, T_1 + T_2 > 1)$, 并由此计算$P(T_1\in I|S = 1) = |I|$.\\
+
+
+% 1.11 $X, Y$为两独立随机变量且分布相同. 证明$\E (X|X+Y = z) = \E (Y|X+Y = z)$. 并试求基于$X+Y=z$的$X$的最佳预报, 并求出预报误差$\E (X-\phi (X+Y))^2$\\
+
+
+1.12 气体分子的速度$V$有三个垂直分量$V_x, V_y, V_z$, 它们的联合分布密度依$Maxwell-Boltzman$定律为
+	\[
+	f_{V_x, V_y, V_z}(v_1, v_2, v_3) = \frac{1}{(2\pi kT)^{3/2}}\exp\left\{-\left(\frac{v^2_1+v^2_2+v^2_3}{2kT}\right)\right\},
+	\]
+	其中$k$是Boltzman常数, $T$为绝对温度, 给定分子的总动能为$e$. 试求$x$方向的动量的绝对值的期望值.\\ 
+解：由题中所给分布律知分子质量为单位质量, 即有$e = \frac{1}{2}\big(V^2_x+V^2_y+V^2_z\big)$.\\
+则所求为
+\[
+\E \Big[|V_x|\Big|\frac{1}{2}\big(V^2_x+V^2_y+V^2_z\big) = e\Big]
+\]
+作$\big(V_x, V_y, V_z\big)$的球坐标变换
+\[
+\begin{split}
+V_x & = R\cos\Phi\\
+V_y & = R\cos\Theta\sin\Phi\\
+V_z & = R\sin\Theta\sin\Phi,\\
+\end{split}
+\]
+则$(R,\Theta,\Phi)$的联合概率密度为
+\[
+\begin{split}
+f_{R,\Theta,\Phi}(r,\theta,\phi) & = f_{V_x, V_y, V_z}(r\cos\phi,r\cos\theta\sin\phi,r\sin\theta\sin\phi)\cdot r^2\sin\phi\\
+								& = \frac{\sqrt{2}r^2}{\sqrt{\pi}(kT)^{3/2}}e^{-r^2/2kT}\cdot \frac{1}{2\pi}\cdot \frac{1}{2}\sin\phi\\
+								& = f_R(r)f_\Theta(\theta)f_\Phi(\phi)
+\end{split}
+\]
+由此可知$R,\Theta,\Phi$相互独立.\\
+\[
+\begin{split}
+\therefore & \quad \E\Big[|V_x|\Big|\frac{1}{2}\big(V^2_x+V^2_y+V^2_z\big) = e\Big]\\
+		& = \E\Big[R|\cos\Phi|\Big|\frac{1}{2}R^2 = e\Big]\\
+		& = \E\Big[R|\cos\Phi|\Big|R = \sqrt{2e}\Big]\\
+		& = \sqrt{2e}\E\big[R|\cos\Phi|\big]\\
+		& = \sqrt{2e}\int^\pi_0\frac{1}{2}\sin\phi|\cos\phi|\,d\phi\\
+		& = \sqrt{\frac{e}{2}}
+\end{split}
+\]
+
+
+1.13 若$X_1, X_2,\cdots, X_n$独立同分布. 它们服从参数为$\lambda$的指数分布. 试证$\sum\limits^n_{i=1}X_i$是参数为$(n, \lambda)$的$\Gamma$分布, 其密度为
+	\[
+	f(t) = \lambda \exp\{-\lambda t\}(\lambda t)^{n-1}/(n-1)!~,~~t \geqslant 0.
+	\]
+证：
+	\begin{flushleft}
+	令$Y = \sum\limits^n_{i=1}X_i$\\
+	$g_Y(t) = g^n_X(t) = \left(\frac{\lambda}{\lambda - t}\right)^n$\\
+	$\therefore Y$服从参数为$(n, \lambda)$的$\Gamma$分布, 其密度函数如题所述\\
+	\end{flushleft}
+
+
+1.14 设$X_1$和$X_2$为相互独立的均值为${\lambda}_1$和${\lambda}_2$的Possion随机变量. 试求$X_1+X_2$的分布, 并计算给定$X_1+X_2 = n$时$X_1$的条件分布.\\
+解：
+	令$Y = X_1+X_2$\\\
+	\begin{align*}
+	g_Y(t) & = g_{X_1}(t)g_{X_2}(t)\\
+			& = e^{{\lambda}_1(e^t-1)}e^{{\lambda}_2(e^t-1)}\\
+			& = e^{({\lambda}_1 + {\lambda}_2)(e^t-1)}
+	\end{align*}
+	$\therefore Y \sim P({\lambda}_1+{\lambda}_2)$\\
+	$\therefore $给定$X_1+X_2 = n$时$X_1$服从参数为$p = \frac{{\lambda}_1}{{\lambda}_1 + {\lambda}_2}, n = n$的二项分布 
+
+
+1.15 若$X_1, X_2,\cdots $独立且有相同的以$\lambda$为参数的指数分布, $N$服从几何分布, 即
+	\[
+	P(N = n) = \beta(1-\beta)^{n-1}, n = 1,2,\cdots, 0<\beta<1.
+	\]
+试求随机和$Y = \sum\limits^N_{i=1}X_i$的分布.\\
+解：
+	\[
+	E(e^{tY} | N = n) = g^n_X (t) = \left(\frac{\lambda}{\lambda - t}\right)^n \overset{\Delta}{=} {\alpha}^n 
+	\]
+	\[
+	\therefore g_Y(t) = E[E(e^{tY}|N)] = E({\alpha}^N) = \sum^{+\infty}_{n=1}\beta(1-\beta)^{n-1}{\alpha}^n = \sum^{+\infty}_{n=1}\alpha\beta(\alpha-\alpha\beta)^{n-1}
+	\]
+	当$|\alpha -\alpha\beta|<1$时$g_Y(t)=\frac{\alpha\beta}{1-\alpha(1-\beta)} = \frac{\lambda\beta}{\lambda\beta - t}$\\
+	$\therefore Y$服从参数为$\lambda\beta$的指数分布
+
+
+1.16 若$X_1, X_2, \cdots$独立同分布, $P(X_i = \pm 1) = \frac{1}{2}$. $N$与$X_i$, $i \geqslant 1$独立且服从参数为$\beta$的几何分布, $0 < \beta < 1$. 试求随机和$Y = \sum\limits^N_{i=1} X_i$的均值, 方差和三、四阶矩.\\
+解：
+	\begin{center}
+	$E(e^{tY} | N = n) = g^n_X (t) = E^n(e^{tY}) = {\left(\frac{e^t + e^{-t}}{2}\right)}^n$\\
+	$\therefore g_Y(t) = E \left[ E(e^{tY} | N)\right] = E \left[ {\left(\frac{e^t + e^{-t}}{2}\right)}^N\,\right] = \sum\limits^{+\infty}_{n=1}{\left(\frac{e^t + e^{-t}}{2}\right)}^n \beta (1 - \beta)^{n - 1}$
+	\end{center}
+
+	\[
+	\begin{aligned}
+	\therefore EY & = g^{\prime}_Y(0) = \sum^{+\infty}_{n=1} n {\left(\frac{e^t + e^{-t}}{2}\right)}^{n - 1}\beta (1 - \beta)^{n - 1} \frac{e^t - e^{-t}}{2} \bigg|_{t=0} = 0 \\
+	EY^2 & = g^{\prime \prime}_Y(0) \\
+		& = \sum^{+\infty}_{n=1}\bigg[ n(n-1)\left(\frac{e^t + e^{-t}}{2}\right)^{n-2}\beta (1 - \beta)^{n - 1} \left(\frac{e^t - e^{-t}}{2}\right)^2 + \\
+		& \qquad n\left(\frac{e^t + e^{-t}}{2}\right)^n\beta (1 - \beta)^{n - 1} \bigg] \Bigg|_{t=0}\\
+		& = \sum^{+\infty}_{n=1}n\beta(1-\beta)^{n-1}\\
+		& = \frac{1}{\beta}\\
+	VarY & = EY^2-(EY)^2 = \frac{1}{{\beta}^2}\\
+	EY^3 & = g^{(3)}_Y(0)\\
+		& = \left(\sum^{+\infty}_{n=1}\left\{n\beta(1-\beta)^{n-1}\left[(n-1)\left(\frac{e^t+e^{-t}}{2}\right)^{n-2}{\frac{e^t-e^{-t}}{2}}^2+\left(\frac{e^t+e^{-t}}{2}\right)^n\right]\right\}\right)^{\prime}\Bigg|_{t=0}\\
+		& = \sum^{+\infty}_{n=1}\Bigg\{ n\beta{(1-\beta)}^{n-1}\Bigg[(n-1)(n-2)\left(\frac{e^t+e^{-t}}{2}\right)^{n-2}\left(\frac{e^t-e^{-t}}{2}\right)^{3}+ \\
+		& \qquad (n-1)\left(\frac{e^t+e^{-t}}{2}\right)^{n-2} \cdot 2 \cdot \frac{e^t-e^{-t}}{2} \cdot \frac{e^t+e^{-t}}{2} + n \cdot \left(\frac{e^t+e^{-t}}{2}\right)^{n-1} \cdot \frac{e^t-e^{-t}}{2} \Bigg] \Bigg\} \Bigg|_{t=0}\\
+		& = 0 \\
+    EY^4 & = g^{(4)}_Y(0)\\ 
+        & = \sum^{+\infty}_{n=1}\left\{n\beta(1-\beta)^{n-1}\left[(n-1)\left(\frac{e^t+e^{-t}}{2}\right)^{n-1}(e^t+e^{-t})+n\left(\frac{e^t+e^{-t}}{2}\right)^{n}\right]\right\} \Bigg|_{t=0}\\
+        & = \sum^{+\infty}_{n=1}(3n^2-2n)\beta(1-\beta)^{n-1}\\
+        & = 3\sum^{+\infty}_{n=1}n^2\beta(1-\beta)^{n-1} - 2\sum^{+\infty}_{n=1}n\beta(1-\beta)^{n-1}\\
+        & = 3\left(\frac{1-\beta}{{\beta}^2} + \frac{1}{{\beta}^2}\right) - 2\frac{1}{{\beta}^2}\\
+        & = \frac{6-5\beta}{{\beta}^2}
+	\end{aligned}
+	\]
+
+
+1.17 随机变量$N$服从参数为$\lambda$的Possion分布. 给定$N=n$, 随机变量$M$服从以$n$和$p$为参数的二项分布. 试求$M$的无条件概率分布.\\
+解：
+\[
+\begin{split}
+& \E\big(e^{tM}|N=n\big) = \big(pe^t+(1-p)\big)^n \overset{\Delta}{=} a^n\\
+& g_M(t) = \E(a^N) = \sum^{+\infty}_{n=0}a^n\frac{\lambda^n}{n!}e^{-\lambda} = e^{\lambda p(e^t-1)}\\
+& \therefore M \sim P(\lambda p)
+\end{split}
+\]
+
