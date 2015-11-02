@@ -356,17 +356,14 @@ f^{(n)}_{00} = \begin{pmatrix}\frac{1}{2} & 0 & \frac{1}{2}\end{pmatrix}
 再考虑2k步的情况, \\
 \[
 \begin{split}
-P^{(2k)}_{00} & = \sum^k_{k_1 = 0}C^{k-k_1}_{2k-2k_1}C^k_{2k_1}C^{2k_1}_{2k}\left(\frac{1}{4}\right)^{2k}\\
+P^{(2k)}_{00} & = \sum^k_{k_1 = 0}C^{k-k_1}_{2k-2k_1}C^{k_1}_{2k_1}C^{2k_1}_{2k}\left(\frac{1}{4}\right)^{2k}\\
 			& = \sum^k_{k_1 = 0}\frac{(2k)!}{(k!)^2}\left(C^{k_1}_k\right)^2\left(\frac{1}{2^{2k}}\right)^2\\
+            & = \frac{(2k)!}{(k!)^2}\left(\frac{1}{2^{2k}}\right)^2\sum^k_{k_1 = 0}C^{k_1}_kC^{k-k_1}_k\\
+            & = \frac{(2k)!}{(k!)^2}\left(\frac{1}{2^{2k}}\right)^2C^{k}_{2k}\\
+            & = \left(\frac{(2k)!}{(k!)^2} \cdot \frac{1}{2^{2k}}\right)^2
 \end{split}
 \]
-断言
-\[
-\sum\limits^k_{k_1=0}\left(C^{k_1}_k\right)^2 = \frac{(2k)!}{(k!)^2},
-\]
-\[
-\therefore P^{(2k)}_{00} = \left(\frac{(2k)!}{(k!)^2} \cdot \frac{1}{2^{2k}}\right)^2
-\]
+
 
 当$n$充分大时, 由Stiring公式
 \[
@@ -374,14 +371,6 @@ P^{(2k)}_{00} \sim \left(\frac{(2k)^{2k+\frac{1}{2}} e^{-2k} \sqrt{2\pi}}{(k^{k+
 \]
 $\therefore \sum\limits^{+\infty}_{n=1}P^{(n)}_{ii} = +\infty$   (i代表任一格点)\\
 $\therefore $二维对称随机游动是常返的\\
-断言的证明：
-\begin{align*}
-			(1+x)^k & = \sum^k_{k_1 = 0} C^{k_1}_k x^{k_1}\\
-			(1+x)^{2k} & = \left(\sum^k_{k_1 = 0} C^{k_1}_k x^{k_1}\right)\left(\sum^k_{k_2 = 0} C^{k_2}_k x^{k_2}\right)
-			\end{align*}
-
-			比较两边$x^k$的系数, 有$C^k_{2k} = \sum\limits^k_{k_1 = 0} C^{k_1}_k C^{k-k_1}_k = \sum\limits^k_{k_1 = 0} \left(C^{k_1}_k\right)^2 = \frac{(2k)!}{(k!)^2}$
-
 
 
 3.14 某厂对该厂生产的同类产品的三种型号调查顾客的消费习惯. 并把它们归结为Markov链模型. 记顾客消费习惯在 $A, B, C $ 三种型号间的转移概率矩阵分别为下列四种. 请依这些转移阵所提供的信息对厂家提出关于 $A, B$ 两种型号的咨询意见.\\
@@ -538,11 +527,11 @@ $\therefore A,B,C$市场占有率相同, 可维持现状.\\
 \[
 P = 
 \bordermatrix{
-	~ & 0 & 1 & 2 & 3 & cdots \cr
-	0 & 0 & 1 & 0 & 0 & \cdots \cr
-	1 & q_1 & 0 p_1 & 0 & ~ \cr
-	2 & q_2 & 0 & 0 p_2 & ~ \cr
-	3 & q_3 & 0 & 0 & 0 ~ \cr
+	~ & 0   & 1 & 2   & 3   & \cdots \cr
+	0 & 0   & 1 & 0   & 0   & \cdots \cr
+	1 & q_1 & 0 & p_1 & 0   & ~ \cr
+	2 & q_2 & 0 & 0   & p_2 & ~ \cr
+	3 & q_3 & 0 & 0   & 0 ~ \cr
 	\vdots & \vdots & ~ & ~ & ~ & \ddots \cr
 }
 \]
