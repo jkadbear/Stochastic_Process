@@ -1,0 +1,112 @@
+\usepackage{ifthen}
+
+% check if document is oneside or twoside
+%--------------------------------------
+\makeatletter
+\if@twoside
+    \def\SIDE{twoside}
+\else
+    \def\SIDE{oneside}
+\fi
+\makeatother
+%--------------------------------------
+
+% page dimensions
+%--------------------------------------
+% see https://de.sharelatex.com/learn/Page_size_and_margins
+\ifthenelse{\equal{\SIDE}{oneside}}
+    {
+        \usepackage{geometry}\geometry{
+            a4paper, % a4 size 210x297 mm
+            left=35mm,
+            right=20mm,
+            top=35mm,
+            bottom=25mm,
+            footskip=10mm,
+            headheight=20mm % required for header
+        }
+    }
+    {
+        \usepackage{geometry}\geometry{
+            a4paper, % a4 size 210x297 mm
+            twoside,
+            left=35mm,
+            right=20mm,
+            top=35mm,
+            bottom=25mm,
+            footskip=10mm,
+            headheight=20mm % required for header
+        }
+    }
+%--------------------------------------
+
+% reduce chapter margin
+\renewcommand*{\chapterheadstartvskip}{\vspace*{0mm}}
+
+% Multi line comments
+%--------------------------------------
+\usepackage{verbatim}
+%--------------------------------------
+
+% font
+%--------------------------------------
+\usepackage{xeCJK}
+\setCJKmainfont{Microsoft YaHei}
+\setmainfont{Times New Roman}
+%--------------------------------------
+
+% set line height/spacing
+\renewcommand{\baselinestretch}{1.5}
+
+% Remove indentation
+%--------------------------------------
+\parindent0pt
+%-------------------------------------
+
+% Landscape
+%--------------------------------------
+\usepackage{pdflscape}
+%--------------------------------------
+
+% colors
+%--------------------------------------
+\usepackage[table]{xcolor}
+\input{config/colors}
+%--------------------------------------
+
+% Tables
+%--------------------------------------
+\usepackage{longtable}
+% alternate rowcolors for all long-tables
+\let\oldlongtable\longtable
+\let\endoldlongtable\endlongtable
+%--------------------------------------
+
+% date
+%--------------------------------------
+\usepackage[yyyymmdd]{datetime}
+% format date
+\renewcommand{\dateseparator}{--}
+%--------------------------------------
+
+% Header & footer
+%--------------------------------------
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{etoolbox}
+%--------------------------------------
+
+% Enable linking e.g. for table of contents
+%--------------------------------------
+\usepackage[hidelinks]{hyperref}
+\urlstyle{rm}
+%--------------------------------------
+
+\usepackage{mathptmx}
+\usepackage{amsmath, bm}
+\usepackage{amssymb}
+
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\var}{\mathrm{Var}}
+\newcommand{\cov}{\mathrm{Cov}}
+% \renewcommand{\today}{\number\month/\number\day/\number\year}

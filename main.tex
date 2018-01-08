@@ -1,0 +1,21 @@
+\documentclass[
+    a4paper, % a4 size 210x297 mm
+    12pt,
+    openany, % required to remove empty page after chapter
+    oneside % oneside or twoside
+]{scrbook}
+
+% initialize basic settings
+\input{config/config}
+
+\begin{document}
+
+\include{src/titlepage}
+\setcounter{page}{1}
+
+\include{src/sp_c1}
+\include{src/sp_c2}
+\include{src/sp_c3}
+\include{src/sp_c4}
+
+\end{document}

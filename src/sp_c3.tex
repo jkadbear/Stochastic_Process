@@ -31,7 +31,7 @@
 	P = \begin{pmatrix}
 	0.1 & 0.2 & 0.7 \\
 	0.9 & 0.1 & 0 \\
-	0.1 & 0.8 & 0.1 
+	0.1 & 0.8 & 0.1
 	\end{pmatrix} ,
 	\]
 	初始分布为$p_0 = 0.3, p_1 = 0.4, p_2 = 0.3$, 试求概率$P\{X_0 = 0, X_1 = 1, X_2 = 2\}$.\\
@@ -56,7 +56,7 @@
 	$\\
 	\[
 	\begin{aligned}
-	\therefore P^{(5)} & =  
+	\therefore P^{(5)} & =
 		\begin{pmatrix} \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2}\\ \frac{\sqrt{2}}{2} & -\frac{\sqrt{2}}{2} \end{pmatrix}^{-1}
 		\begin{pmatrix} 1 & 0 \\ 0 & (1-2\alpha)^5 \end{pmatrix}
 		\begin{pmatrix} \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2}\\ \frac{\sqrt{2}}{2} & -\frac{\sqrt{2}}{2} \end{pmatrix}\\
@@ -71,7 +71,7 @@
 3.4 $A, B$ 两罐总共装各 $N$ 个球. 作如下实验：在时刻 $n$ 先 $n$ 个球中等概率地任取一球. 然后从 $A, B$ 两罐中任选一个, 选中 $A$ 的概率为 $p$, 选中 $B$ 的概率为 $q$. 之后再将选出的球放入选好的罐中. 设 $X_n$ 为每次试验时 $A$ 罐中的球数. 试求此Markov过程的转移概率矩阵.\\
 解：
 \[
-P_{ij} = 
+P_{ij} =
 \begin{cases}
 p \cdot \frac{i}{N} + q \cdot \frac{N-i}{N} & , j = i\\
 q \cdot \frac{i}{N} & , j = i-1(i=1,2,\cdots ,N)\\
@@ -81,7 +81,7 @@ p \cdot \frac{N-i}{N} & , j = i+1(i=0,1,\cdots ,N-1)\\
 \]
 其转移概率矩阵为
 \[
-P = \frac{1}{N} 
+P = \frac{1}{N}
 \begin{pmatrix}
 qN & pN & 0 & \cdots & 0 & 0 & 0 \\
 q & q(N-1)+p & p(N-1) & \cdots & 0 & 0 & 0 \\
@@ -100,7 +100,7 @@ q & q(N-1)+p & p(N-1) & \cdots & 0 & 0 & 0 \\
 				~ & 0 & 1 & 2 \cr
 				0 & \frac{1}{2} & \frac{1}{2} & 0 \cr
 				1 & \frac{1}{2} & 0 & \frac{1}{2} \cr
-				2 & 0 & 0 & 1 
+				2 & 0 & 0 & 1
 				}$\\
 \[
 \begin{split}
@@ -120,11 +120,11 @@ q & q(N-1)+p & p(N-1) & \cdots & 0 & 0 & 0 \\
 3.6 迷宫问题. 将小家鼠放入迷宫内作动物的学习试验, 如下图所示. 在迷宫的第$7$号小格内放有美味食物而第$8$号小格内则是电击捕鼠装置. 假定当家鼠位于某格时有$k$个出口可以离去, 则它总是随机地选择一个, 概率为$1/k$. 并假定每一次家鼠只能跑到相邻的小格去. 令过程$X_n$为家鼠在时刻$n$时所在小格的号码, 试写出这一Markov过程的转移概率阵, 并求出家鼠在遭到电击前能找到食物的概率.\\
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.3\textwidth]{../resource/maze.png}
+	\includegraphics[width=0.3\textwidth]{resource/maze.png}
 \end{figure}\\
 解：\\
 \[
-P = 
+P =
 \bordermatrix{
 	~ & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \cr
 	0 & 0 & \frac{1}{2} & \frac{1}{2} & 0 & 0 & 0 & 0 & 0 & 0 \cr
@@ -139,7 +139,7 @@ P =
 }
 \]
 设$u_k$为家鼠从$k$出发在遭到电击前能找到食物的概率, 显然$u_7 = 1, u_8 = 0$,\\
-设$T$为进入吸收态时刻, 则当$0 \leqslant k \leqslant 6$时, 
+设$T$为进入吸收态时刻, 则当$0 \leqslant k \leqslant 6$时,
 \begin{align*}
 u_k & = P\{X_T = 7 | X_0 = k\}\\
 	& = \sum^8_{i=0}P\{X_T = 7, X_1 = i | X_0 = k\}\\
@@ -180,7 +180,7 @@ $P\{X_{n+1} = i_{n+1} | X_n = i_n\} = P\{X_{n+1} = i_{n+1}\}$\\
 $\therefore P\{X_{n+1} = i_{n+1} | X_1 = i_1, \cdots , X_n = i_n\} = P\{X_{n+1} = i_{n+1} | X_n = i_n\}$\\
 $\therefore \{X_n\}$是一$M.C.$ ~~~其转移概率矩阵为
 \[
-P = 
+P =
 \begin{pmatrix}
 p_0 & p_1 & p_2 & \cdots \\
 p_0 & p_1 & p_2 & \cdots \\
@@ -199,7 +199,7 @@ X_{n+1} & = \max \{Z_1, \cdots, Z_n, Z_{n+1}\}\\
 \end{align*}
 $\therefore \{X_n\}$是$M.C.$\\
 \[
-P_{ij} = 
+P_{ij} =
 \begin{cases}
 0 & , j < i\\
 p_j & , j > i\\
@@ -209,7 +209,7 @@ p_j & , j > i\\
 \]
 其转移概率矩阵为
 \[
-P = 
+P =
 \begin{pmatrix}
 p_0 & p_1 & p_2 & \cdots \\
 0 & p_0+p_1 & p_2 & \cdots \\
@@ -244,7 +244,7 @@ P^{(n)}_{ij} = \sum^n_{k=0}f^{(k)}_{ij}P^{(n-k)}_{jj}.
 & \quad P\{X_{n+1} = i_{n+1} | X_0 = i_0, \cdots, X_n = i_n\}~~~~(i_0 = 0)\\
 & = P\{Z_{n+1} = i_{n+1} - i_n | X_0 = i_0, \cdots, X_n = i_n\}\\
 & = P\{Z_{n+1} = i_{n+1} - i_n\}\\
-& = 
+& =
 \begin{cases}
 P_{i_{n+1}-i_n} &, i_{n+1} - i_n = 0,1,2,\cdots\\
 0 &, ow
@@ -260,7 +260,7 @@ P_{i_{n+1}-i_n} &, i_{n+1} - i_n = 0,1,2,\cdots\\
 \]
 $\therefore X_n $是$M.C.$\\
 \[
-P = 
+P =
 \begin{pmatrix}
 p_0 & p_1 & p_2 & \cdots \\
 0	& p_0 & p_1 & \cdots \\
@@ -272,7 +272,7 @@ p_0 & p_1 & p_2 & \cdots \\
 
 3.11 一Markov链有状态$0,1,2,3$和转移概率矩阵
 \[
-P = 
+P =
 \begin{pmatrix}
 0 & \frac{1}{2} & 0 & \frac{1}{2}\\
 0 & 0 & 1 & 0\\
@@ -297,7 +297,7 @@ f^{(n)}_{00} = \begin{pmatrix}\frac{1}{2} & 0 & \frac{1}{2}\end{pmatrix}
 	\begin{pmatrix}0 \\ 0 \\ \frac{1}{2}\end{pmatrix}
 \]
 当$n=3$时, $f^{(3)}_{00} = \frac{1}{8}$\\
-当$n \geqslant 4$时, 
+当$n \geqslant 4$时,
 \[
 f^{(n)}_{00} = \begin{pmatrix}\frac{1}{2} & 0 & \frac{1}{2}\end{pmatrix}
 	\begin{pmatrix}
@@ -323,7 +323,7 @@ f^{(n)}_{00} = \begin{pmatrix}\frac{1}{2} & 0 & \frac{1}{2}\end{pmatrix}
 		q & , j = 0\\
 		\end{cases}$
 	\[
-	P = 
+	P =
 	\bordermatrix{
 		~ & 0 & 1 & 2 & 3 & \cdots \cr
 		0 & q & p & 0 & 0 & \cdots \cr
@@ -344,7 +344,7 @@ f^{(n)}_{00} = \begin{pmatrix}\frac{1}{2} & 0 & \frac{1}{2}\end{pmatrix}
 	\]
 	\begin{figure}[htbp]
 		\centering
-		\includegraphics[width=0.8\textwidth]{../resource/sp3_12.png}
+		\includegraphics[width=0.8\textwidth]{resource/sp3_12.png}
 	\end{figure}\\
 	所有状态互通, 为一类\\
 
@@ -402,7 +402,7 @@ $\therefore $二维对称随机游动是常返的\\
 (1)不是概率转移矩阵, 第三行行和不为$1$.\\
 (2)
 \[
-P^2 = 
+P^2 =
 \begin{pmatrix}
 0 & \frac{1}{2} & \frac{1}{2}\\
 \frac{1}{2} & 0 & \frac{1}{2}\\
@@ -448,11 +448,11 @@ P^n=
 \]
 \[
 \begin{cases}
-(\pi_A, \pi_C)\cdot 
+(\pi_A, \pi_C)\cdot
 	\begin{pmatrix}
 	\frac{1}{2} & \frac{1}{2}\\
 	\frac{1}{2} & \frac{1}{2}\\
-	\end{pmatrix}	
+	\end{pmatrix}
 =
 (\pi_A, \pi_C)\\
 \pi_A + \pi_C = 1
@@ -464,7 +464,7 @@ $\therefore B$将逐渐淡出市场, 建议停止生产$B$, 扩大对$A$的生�
 (4)
 \begin{figure}[htbp]
 		\centering
-		\includegraphics[width=0.2\textwidth]{../resource/sp3_14_4.png}
+		\includegraphics[width=0.2\textwidth]{resource/sp3_14_4.png}
 \end{figure}\\
 $\therefore A,B,C$三状态互通, 所有状态可遍历.\\
 \[
@@ -495,7 +495,7 @@ $\therefore A,B,C$市场占有率相同, 可维持现状.\\
 	\]
 	考虑$P^{(n)}_{ij} = \sum\limits^{+\infty}_{k=1} f^{(k)}_{ij} P^{(n-k)}_{jj}$, 则有
 	\[
-	\sum^\ell_{k=1} f{(k)}_{ij} P^{(n-k)}_{jj} \leqslant P^{(n)}_{ij} \leqslant \sum^\ell_{k=1} f^{(k)}_{ij} P^{(n-k)}_{jj} + \sum^{+\infty}_{k=l} f^{(k)}_{ij}~~~~~~~(**)
+	\sum^\ell_{k=1} f^{(k)}_{ij} P^{(n-k)}_{jj} \leqslant P^{(n)}_{ij} \leqslant \sum^\ell_{k=1} f^{(k)}_{ij} P^{(n-k)}_{jj} + \sum^{+\infty}_{k=l} f^{(k)}_{ij}~~~~~~~(**)
 	\]
 	固定$\ell$, 令$n \rightarrow +\infty$, 则由$(*)$得
 	\[
@@ -511,8 +511,8 @@ $\therefore A,B,C$市场占有率相同, 可维持现状.\\
 	\]
 	$(*5)$中令$n\rightarrow +\infty$, 由$(*4)$得$0=1$, 矛盾\\
 	$\therefore$至少有一个状态是(正)常返的\\
-(b)若存在零常返状态$i$, 可构造$C(i) = \{j|i\leftrightarrow j\}$, 
-	则$C(i)$为原$M.C.$的一不可约子$M.C.$(有限状态), 
+(b)若存在零常返状态$i$, 可构造$C(i) = \{j|i\leftrightarrow j\}$,
+	则$C(i)$为原$M.C.$的一不可约子$M.C.$(有限状态),
 	于是$C(i)$中所有状态均为零常返, 与有限状态$M.C.$至少有一个正常返状态矛盾, $\therefore$任何常返状态均为正常返
 
 
@@ -525,7 +525,7 @@ $\therefore A,B,C$市场占有率相同, 可维持现状.\\
 证：\\
 (a)其概率转移阵为
 \[
-P = 
+P =
 \bordermatrix{
 	~ & 0   & 1 & 2   & 3   & \cdots \cr
 	0 & 0   & 1 & 0   & 0   & \cdots \cr
@@ -539,7 +539,7 @@ P =
 显然$f^{(0)}_{00} = f^{(1)}_{00} = 0, f^{(2)}_{00} = q_1$
 \[
 \begin{split}
-f^{(n)}_{00} & = 
+f^{(n)}_{00} & =
 \begin{pmatrix}
 1 & 0 & 0 & \cdots
 \end{pmatrix}
@@ -560,7 +560,7 @@ q_3\\
 \]
 易知
 \[
-B^{n-2} = 
+B^{n-2} =
 \begin{pmatrix}
 \underbrace{\begin{matrix}0 & \cdots & 0\end{matrix}}_{n-2\text{个}} & p_1\cdots p_{n-2} & 0 & \cdots \\
 \underbrace{\begin{matrix}0 & \cdots & 0\end{matrix}}_{n-2\text{个}} & 0 & p_2\cdots p_{n-2} & \cdots \\
@@ -578,7 +578,7 @@ B^{n-2} =
 \end{split}
 \]
 而状态$0$常返$\Leftrightarrow f_{00} = 1 \Leftrightarrow \lim\limits_{n\rightarrow +\infty}p_1p_2\cdots p_n = 0$.\\
-(b)只需考虑状态$0$, 
+(b)只需考虑状态$0$,
 \[
 \begin{split}
 \mu_0 & = \sum^{+\infty}_{n=0}nf^{(n)}_{00}\\
@@ -622,7 +622,7 @@ $
 
 3.18 假定在逐日的天气变化模型中, 每天的阴晴与前两天的状况关系很大. 于是可考虑$4$状态的Markov链：接连两晴天, 一晴一阴, 一阴一晴, 以及接连两阴天, 分别记为$(S, S), (S, C), (C, S), (C, C)$. 该链的转移概率阵为
 \[
-P = 
+P =
 \bordermatrix{
 	~ & (S,S) & (S,C) & (C,S) & (C,C) \cr
 	(S,S) & 0.8 & 0.2 & 0 & 0 \cr
@@ -650,7 +650,7 @@ $\therefore$一年中晴朗的天数 $ = \frac{365}{2} \times \left(\frac{3}{11}
 解：\\
 定义$X_n$：第$n$天早晨家中雨伞数, $\therefore \{X_n, n \geqslant 0\}$为一$M.C.$\\
 	% \[
-	% P = 
+	% P =
 	% \bordermatrix{
 	% 	~ & 0\!\!\!\!\!\!\! & 1\! & 2\! & \cdots\! & ~\! & M\! \cr
 	% 	0 & 1-p\! & p\! & 0\! & ~\! & ~\! & ~\! \cr
@@ -675,7 +675,7 @@ $\therefore$一年中晴朗的天数 $ = \frac{365}{2} \times \left(\frac{3}{11}
 	% \end{cases}
 	% \]
 	\[
-	P = 
+	P =
 	\begin{pmatrix}
 	\begin{smallmatrix}
 		1-p & p & 0 & ~ & ~ & ~ & ~\\
@@ -723,7 +723,7 @@ P_{ij}=
 \]
 转移概率矩阵为
 \[
-P = 
+P =
 \bordermatrix{
 	~ & 0 & 1 & 2 & 3 & \cdots & \cdots & N \cr
 	0 & 0 & 1 & 0 & 0 & ~  & ~  & ~ \cr
@@ -828,7 +828,7 @@ P_{00}(t) = \frac{\lambda}{\lambda + \mu}e^{-(\lambda + \mu)t} + \frac{\mu}{\lam
 			& = \frac{(\lambda t)^k}{k!}e^{-\lambda t}
 	\end{split}
 	\]
-	
+
 综上, 当$\lambda = \mu$时$N(t)$服从参数为$\lambda t$的Possion分布
 
 

@@ -9,10 +9,10 @@
         \[
         \therefore \E X(s)X(s^{\prime}) = f(s^{\prime}-s)
         \]
-		\[			
+		\[
 			\begin{aligned}
 			\therefore R_X(s, s^{\prime})  & = \E X(s)X(s^{\prime}) - \E X(s)\E X(s^{\prime}) \\
-									 & = f(s^{\prime} - s) - m^2 
+									 & = f(s^{\prime} - s) - m^2
 			\end{aligned}
 		\]
 		$\therefore X(t)$是宽平稳的\\
@@ -30,7 +30,7 @@
 
 
 1.2 记$U_1, \cdots, U_n$为在$(0,1)$中均匀分布的独立随机变量. 对$0<t,x<1$定义
-	\[ I(t,x) = 
+	\[ I(t,x) =
 		\begin{cases}
 		1, & \text{ $x \leqslant t$,} \\
 		0, & \text{ $x > t$,}
@@ -57,7 +57,7 @@
 
 
 1.3 令~$Z_1, Z_2$~为独立的正态随机变量,~均值为$0$,~方差为$\sigma^2$,~$\lambda$为实数.~定义过程$X(t) = Z_1\cos\lambda t + Z_2\sin\lambda t$.~试求$X(t)$的均值函数和协方差函数.~它是宽平稳的吗?\\
-解：	
+解：
 	\[
 	\begin{aligned}
 	\E X(t) & = \cos\lambda t \E Z_1 + \sin\lambda t \E Z_2 = 0\\
@@ -81,9 +81,9 @@
 	\end{aligned}
 	\]
 	$\therefore $ 非宽平稳\\
-	
 
-1.5 X(t)为第4题中的Possion过程. 记$Y(t) = X(t+1) - X(t)$, 试求过程$Y(t)$的均值函数和协方差函数, 并研究其平稳性.\\
+
+1.5 $X(t)$为第4题中的Possion过程. 记$Y(t) = X(t+1) - X(t)$, 试求过程$Y(t)$的均值函数和协方差函数, 并研究其平稳性.\\
 解：
 	\[
 	\begin{aligned}
@@ -159,7 +159,7 @@
 	\begin{center}
 	这说明了$(X_{n_1},\cdots,X_{n_k})$的分布函数与$n_1, \cdots, n_k$无关, 故$\{X_1, X_2, \cdots\}$严平稳.\\
 	\end{center}
-	
+
 
 1.9 令$X$和$Y$是从单位圆内的均匀分布中随机选取一点所得的横坐标和纵坐标. 试计算条件概率
 	\[
@@ -179,7 +179,7 @@
 	\[
 	f_{V_x, V_y, V_z}(v_1, v_2, v_3) = \frac{1}{(2\pi kT)^{3/2}}\exp\left\{-\left(\frac{v^2_1+v^2_2+v^2_3}{2kT}\right)\right\},
 	\]
-	其中$k$是Boltzman常数, $T$为绝对温度, 给定分子的总动能为$e$. 试求$x$方向的动量的绝对值的期望值.\\ 
+	其中$k$是Boltzman常数, $T$为绝对温度, 给定分子的总动能为$e$. 试求$x$方向的动量的绝对值的期望值.\\
 解：由题中所给分布律知分子质量为单位质量, 即有$e = \frac{1}{2}\big(V^2_x+V^2_y+V^2_z\big)$.\\
 则所求为
 \[
@@ -235,7 +235,7 @@ f_{R,\Theta,\Phi}(r,\theta,\phi) & = f_{V_x, V_y, V_z}(r\cos\phi,r\cos\theta\sin
 			& = e^{({\lambda}_1 + {\lambda}_2)(e^t-1)}
 	\end{align*}
 	$\therefore Y \sim P({\lambda}_1+{\lambda}_2)$\\
-	$\therefore $给定$X_1+X_2 = n$时$X_1$服从参数为$p = \frac{{\lambda}_1}{{\lambda}_1 + {\lambda}_2}, n = n$的二项分布 
+	$\therefore $给定$X_1+X_2 = n$时$X_1$服从参数为$p = \frac{{\lambda}_1}{{\lambda}_1 + {\lambda}_2}, n = n$的二项分布
 
 
 1.15 若$X_1, X_2,\cdots $独立且有相同的以$\lambda$为参数的指数分布, $N$服从几何分布, 即
@@ -245,7 +245,7 @@ f_{R,\Theta,\Phi}(r,\theta,\phi) & = f_{V_x, V_y, V_z}(r\cos\phi,r\cos\theta\sin
 试求随机和$Y = \sum\limits^N_{i=1}X_i$的分布.\\
 解：
 	\[
-	E(e^{tY} | N = n) = g^n_X (t) = \left(\frac{\lambda}{\lambda - t}\right)^n \overset{\Delta}{=} {\alpha}^n 
+	E(e^{tY} | N = n) = g^n_X (t) = \left(\frac{\lambda}{\lambda - t}\right)^n \overset{\Delta}{=} {\alpha}^n
 	\]
 	\[
 	\therefore g_Y(t) = E[E(e^{tY}|N)] = E({\alpha}^N) = \sum^{+\infty}_{n=1}\beta(1-\beta)^{n-1}{\alpha}^n = \sum^{+\infty}_{n=1}\alpha\beta(\alpha-\alpha\beta)^{n-1}
@@ -275,7 +275,7 @@ f_{R,\Theta,\Phi}(r,\theta,\phi) & = f_{V_x, V_y, V_z}(r\cos\phi,r\cos\theta\sin
 		& = \sum^{+\infty}_{n=1}\Bigg\{ n\beta{(1-\beta)}^{n-1}\Bigg[(n-1)(n-2)\left(\frac{e^t+e^{-t}}{2}\right)^{n-2}\left(\frac{e^t-e^{-t}}{2}\right)^{3}+ \\
 		& \qquad (n-1)\left(\frac{e^t+e^{-t}}{2}\right)^{n-2} \cdot 2 \cdot \frac{e^t-e^{-t}}{2} \cdot \frac{e^t+e^{-t}}{2} + n \cdot \left(\frac{e^t+e^{-t}}{2}\right)^{n-1} \cdot \frac{e^t-e^{-t}}{2} \Bigg] \Bigg\} \Bigg|_{t=0}\\
 		& = 0 \\
-    EY^4 & = g^{(4)}_Y(0)\\ 
+    EY^4 & = g^{(4)}_Y(0)\\
         & = \sum^{+\infty}_{n=1}\left\{n\beta(1-\beta)^{n-1}\left[(n-1)\left(\frac{e^t+e^{-t}}{2}\right)^{n-1}(e^t+e^{-t})+n\left(\frac{e^t+e^{-t}}{2}\right)^{n}\right]\right\} \Bigg|_{t=0}\\
         & = \sum^{+\infty}_{n=1}(3n^2-2n)\beta(1-\beta)^{n-1}\\
         & = 3\sum^{+\infty}_{n=1}n^2\beta(1-\beta)^{n-1} - 2\sum^{+\infty}_{n=1}n\beta(1-\beta)^{n-1}\\
